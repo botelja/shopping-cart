@@ -1,5 +1,6 @@
 import UI from './ui.js';
 import Products from './products.js';
+import Storage from './storage';
 
 //variables
 const cartBtn = document.querySelector('.cart-btn');
@@ -20,5 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const products = new Products();
 
   //get all products
-  products.getProducts().then((products) => ui.displayProducts(products));
+  products.getProducts().then((products) => {
+    ui.displayProducts(products);
+    Storage.saveProducts(products);
+  });
 });
